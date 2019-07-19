@@ -74,7 +74,7 @@ export default {
     logo: require('@/assets/img/redditicon.png'),
     links: [
       {
-        to: '/',
+        to: '/dashboard',
         icon: 'mdi-view-dashboard',
         text: 'Dashboard'
       },

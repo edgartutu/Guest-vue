@@ -1,16 +1,34 @@
 <template>
-	<v-toolbar id="core-toolbar" dark style="background: #424242;" flat prominent>
+	 <v-card class="rounded-card">
+	<v-toolbar id="core-toolbar" class="teal" style="background: #424242;" flat prominent>
 		<div class="v-toolbar-title">
 			<v-toolbar-title class="font-weight-light text-general">
-				<v-btn v-if="responsive" class="default v-btn--simple" icon @click.stop="onClickBtn">
-					<v-icon>mdi-view-list</v-icon>
-				</v-btn>
+				
 				
 			</v-toolbar-title>
 		</div>
 
 		<v-spacer/>
 		<v-toolbar-items>
+			
+		<v-list-tile
+          v-for="(link, i) in links"
+          :key="i"
+          :to="link.to"
+          :active-class="color"
+        
+          
+        >
+          <v-list-tile-action>
+            <v-icon>{{ link.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-action-text
+		  class="white--text"
+            v-text="link.text"
+          />
+        </v-list-tile>
+			
+
 			<v-flex align-center layout py-2>
 				<v-text-field
 					v-if="responsiveInput"
@@ -19,9 +37,7 @@
 					hide-details
 					color="purple"
 				/>
-				<router-link v-ripple class="toolbar-items" to="/">
-					<v-icon color>mdi-home</v-icon>
-				</router-link>
+				
 				<v-menu bottom left content-class offset-y transition="slide-y-transition">
 					<router-link
 						v-ripple
@@ -29,10 +45,7 @@
 						class="toolbar-items"
 						to="/dashboard/notifications"
 					>
-						<v-badge color="error" overlap>
-							<template slot="badge">{{ notifications.length }}</template>
-							<v-icon color>mdi-bell</v-icon>
-						</v-badge>
+						
 					</router-link>
 					<v-card>
 						<v-list dense>
@@ -42,14 +55,13 @@
 						</v-list>
 					</v-card>
 				</v-menu>
-				<router-link v-ripple class="toolbar-items" to="/dashboard/user-profile">
-					<v-icon color>mdi-account</v-icon>
-				</router-link>
+				
 
 				<v-icon class="toolbar-items" color @click="logout">mdi-power</v-icon>
 			</v-flex>
 		</v-toolbar-items>
 	</v-toolbar>
+	</v-card>
 </template>
 
 <script>
@@ -57,6 +69,42 @@
 
 	export default {
 		data: () => ({
+			 logo: require('@/assets/img/redditicon.png'),
+    links: [
+      {
+        to: '/dashboard',
+      
+        text: 'Dashboard'
+	  },
+	   {
+        to: '/dashboard/messages',
+    
+        text: 'Approved  projects'
+      },
+      {
+        to: '/dashboard/user-profile',
+   
+        text: 'Assigned Proposals'
+      },
+     
+      {
+        to: '/dashboard/user-tables',
+    
+        text: 'Upload projects'
+      },
+      {
+        to: '/dashboard/typography',
+        
+        text: 'Progress comments'
+      },
+      {
+        to: '/dashboard/rejected',
+     
+        text: 'Progress Report'
+      },
+      
+    ],
+    responsive: false,
 			notifications: [
 				"Mike, Thanos is coming",
 				"5 new avengers joined the team",
@@ -106,7 +154,7 @@
 			},
 			logout: function() {
 				this.$store.dispatch("logout").then(() => {
-					this.$router.push("");
+					this.$router.push("/");
 				});
 			}
 		}
@@ -114,6 +162,10 @@
 </script>
 
 <style>
+	 .rounded-card{
+    border-radius:50px;
+}
+
 	#core-toolbar a {
 		text-decoration: none;
 	}

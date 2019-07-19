@@ -9,8 +9,8 @@
         lg12
       >
         <material-card 
-          color="orange"
-          title="Pending Projects"
+          color="green darken-4"
+          title="Assigned Proposals"
           popout  
         >
           <user/>

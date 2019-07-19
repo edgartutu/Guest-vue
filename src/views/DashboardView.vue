@@ -3,17 +3,22 @@
     <v-app
       id="dashboard-view"
       >
+      <v-container>
+       <v-card class="rounded-card">
       <core-filter />
 
       <core-toolbar />
 
-      <core-drawer />
+     
 
       <v-fade-transition mode="out-in">
         <router-view />
       </v-fade-transition>
 
       <core-footer v-if="$route.name !== 'Maps'" />
+        
+      </v-card>
+      </v-container>
 
     </v-app>
   </v-content>
@@ -31,5 +36,8 @@ export default {
 </script>
 
 <style>
+ .rounded-card{
+    border-radius:50px;
+}
 
 </style>

@@ -14,7 +14,7 @@
             class="elevation-12">
             <v-toolbar
               color="green">
-              <v-toolbar-title>Admin </v-toolbar-title>
+              <v-toolbar-title>Guest </v-toolbar-title>
               <v-spacer/>
             </v-toolbar>
             <v-card-text>

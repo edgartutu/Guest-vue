@@ -1,9 +1,13 @@
 <template>
+<v-card class="rounded-card">
 	<main>
 		<transition mode="out-in">
+			
 			<router-view/>
+			
 		</transition>
 	</main>
+	 </v-card>
 </template>
 
 <style lang="scss">
@@ -35,3 +39,9 @@
 		}
 	};
 </script>
+<style>
+ .rounded-card{
+    border-radius:200px;
+}
+</style>
+

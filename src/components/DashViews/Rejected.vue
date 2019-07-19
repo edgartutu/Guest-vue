@@ -1,9 +1,9 @@
 <template>
 	<div class="guestprogressreport">
 		<navbar2/>
-		<v-container class="ma-5">
+		<v-container >
 			<v-card class="ma-3" v-for="proposal in proposals" :key="proposal.reg_no">
-				<v-card-text class="px-4 my-3">
+				<v-card-text class="px-12 my-6">
 					<div class="font-weight-bold">{{proposal.reg_no}}</div>
 					<div class="font-weight-bold">{{proposal.file}}</div>
 				</v-card-text>
@@ -22,7 +22,7 @@ export default {
 		}
 	},
 	created(){
-		axios.get('http://127.0.0.1:5000/reports').then(response => {
+		axios.get('http://127.0.0.1:5000/reports',{reg_no:'1234'}).then(response => {
                 this.proposals = response.data
             })
 	}

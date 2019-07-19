@@ -1,47 +1,120 @@
 <template>
-    <v-container
-    id="input-usage"
-    grid-list-xl
+<v-card class="rounded-card">
+  <v-container
+    fill-height
     fluid
+    grid-list-xl
   >
-    <v-layout wrap>
-      <v-flex xs12>
-        <v-input
-          :messages="['Messages']"
-          append-icon="close"
-          prepend-icon="phone"
+    <v-layout
+      justify-center
+      wrap
+    >
+
+      <v-flex
+        md14
+      >
+
+        <material-card 
         >
-          Default Slot
-        </v-input>
+          <v-btn
+            color="red"
+            dark
+            class="mb-2" >Edit</v-btn>
+            <v-layout column style="height: 100vh">       
+            <v-flex  style="overflow: auto">   
+          <v-data-table
+            :headers="headers"
+            :items="items"
+            hide-actions
+          >
+            <template
+              slot="headerCell"
+              slot-scope="{ header }"
+            >
+              <span
+                class="subheading font-weight-light text-general text--darken-3"
+                v-text="header.text"
+              />
+            </template>
+            <template
+              slot="items"
+              slot-scope="{ item }"
+            >
+             <td>{{ item.reg_no }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.problem_statement }}</td>
+               <td>{{ item.abstract }}</td>
+                <td>{{ item.proposal_uploadfile }}</td>
+                 <td>{{ item.status }}</td>
+            </template>
+          </v-data-table>
+          </v-flex>
+          </v-layout>
+        </material-card>
       </v-flex>
+
+     
     </v-layout>
   </v-container>
-    
+  </v-card>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        text: ''
-      }
-    },
-    methods: {
-      appendIconCallback () {},
-      prependIconCallback () {}
-    }
-  }
+import axios from 'axios'
+export default {
+  data: () => ({
+    headers: [
+      {
+        sortable: true,
+        text: 'Reg No',
+        value: 'reg_no'
+      },
+      {
+        sortable: true,
+        text: 'Title',
+        value: 'title'
+      },
+      {
+        sortable: false,
+        text: 'Problem Statment',
+        value: 'problem_statment'
+      },
+      {
+        sortable: false,
+        text: 'Abstract',
+        value: 'abstract',
+      },
+      {
+        sortable: false,
+        text: 'File',
+        value: 'file',
+      },
+      {
+        sortable: false,
+        text: 'Status',
+        value: 'status',
+      },
+
+        ],
+        items: []
+
+        }),
+        mounted() {
+          
+            axios.get("http://127.0.0.1:5000/approved").then(response => {
+                this.items = response.data
+            })
+
+             
+            
+
+          
+            },
+}
 </script>
-content_copy
-
-
-<style>
-  #input-usage .v-input__prepend-outer,
-  #input-usage .v-input__append-outer,
-  #input-usage .v-input__slot,
-  #input-usage .v-messages {
-    border: 1px dashed rgba(0,0,0, .4);
-  }
+<style >
+   .rounded-card{
+    border-radius:50px;
+}
+  
 </style>
-content_copy
-

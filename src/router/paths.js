@@ -33,12 +33,12 @@ export default [
       }
       
       else {
-        next('/dashboard')
+        next()
       }
     },
     children: [
       {
-        path: '',
+        path: '/',
         component: () => import(`@/components/LoginForm.vue`)
       }
     ]
