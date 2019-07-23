@@ -16,9 +16,9 @@
         <material-card 
         >
           <v-btn
-            color="red"
+            color="green darken-3"
             dark
-            class="mb-2" >Edit</v-btn>
+            class="mb-2" >Excell</v-btn>
           <v-data-table
             :headers="headers"
             :items="items"

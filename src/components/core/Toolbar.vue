@@ -1,6 +1,6 @@
 <template>
-	 <v-card class="rounded-card">
-	<v-toolbar id="core-toolbar" class="teal" style="background: #424242;" flat prominent>
+	 <v-card class="rounded-card" mobile-break-point="50" >
+	<v-toolbar   id="core-toolbar" class="teal" style="background: #424242;" flat prominent >
 		<div class="v-toolbar-title">
 			<v-toolbar-title class="font-weight-light text-general">
 				
@@ -9,7 +9,8 @@
 		</div>
 
 		<v-spacer/>
-		<v-toolbar-items>
+		<v-toolbar-items  class="hidden-sm-and-down"> 
+			
 			
 		<v-list-tile
           v-for="(link, i) in links"
@@ -22,11 +23,24 @@
           <v-list-tile-action>
             <v-icon>{{ link.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-action-text
+          <v-list-tile-action-text 
 		  class="white--text"
             v-text="link.text"
           />
         </v-list-tile>
+		
+		</v-toolbar-items>
+
+		<v-menu class="hidden-md-and-up">
+        <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
+        <v-list  >
+          <v-list-tile v-for="(link, i) in links" :key="i" :to="link.to" >
+            <v-list-tile-content >
+              <v-list-tile-title >{{ link.text }}</v-list-tile-title>
+             </v-list-tile-content>
+          </v-list-tile>   
+        </v-list>
+      </v-menu>
 			
 
 			<v-flex align-center layout py-2>
@@ -56,10 +70,10 @@
 					</v-card>
 				</v-menu>
 				
-
 				<v-icon class="toolbar-items" color @click="logout">mdi-power</v-icon>
+				
 			</v-flex>
-		</v-toolbar-items>
+		
 	</v-toolbar>
 	</v-card>
 </template>
@@ -103,7 +117,8 @@
         text: 'Progress Report'
       },
       
-    ],
+	],
+	
     responsive: false,
 			notifications: [
 				"Mike, Thanos is coming",
@@ -114,7 +129,10 @@
 			],
 			title: "final year roject platform",
 			responsive: false,
-			responsiveInput: false
+			responsiveInput: false,
+			
+
+
 		}),
 
 		computed: {
@@ -156,7 +174,8 @@
 				this.$store.dispatch("logout").then(() => {
 					this.$router.push("/");
 				});
-			}
+			},
+
 		}
 	};
 </script>

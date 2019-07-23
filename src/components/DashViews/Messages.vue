@@ -17,9 +17,9 @@
         <material-card 
         >
           <v-btn
-            color="red"
+            color="green darken-3"
             dark
-            class="mb-2" >Edit</v-btn>
+            class="mb-2" >Excel</v-btn>
             <v-layout column style="height: 100vh">       
             <v-flex  style="overflow: auto">   
           <v-data-table

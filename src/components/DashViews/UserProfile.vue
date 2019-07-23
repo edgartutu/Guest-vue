@@ -60,12 +60,16 @@ import axios from 'axios'
 export default {
     data () {
       return {
-        proposals: []
+        proposals: [],
+        email:''
       }  
     },
+
     mounted(){
-      axios.get('http://127.0.0.1:5000/viewproposals').then(response => {
+      this.email=localStorage.getItem('user')
+      axios.post('http://127.0.0.1:5000/viewproposals',{'email':this.email}).then(response => {
                 this.proposals = response.data
+                
             })
     }
      

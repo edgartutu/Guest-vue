@@ -18,11 +18,13 @@ export default {
 
 	data(){
 		return {
-			proposals: []
+			proposals: [],
+			email:''
 		}
 	},
-	created(){
-		axios.get('http://127.0.0.1:5000/reports',{reg_no:'1234'}).then(response => {
+	mounted(){
+		 this.email=localStorage.getItem('user')
+		axios.post('http://127.0.0.1:5000/reports',{'email':this.email}).then(response => {
                 this.proposals = response.data
             })
 	}

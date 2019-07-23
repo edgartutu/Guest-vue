@@ -38,8 +38,12 @@
          Add Project
         </v-card-title>
 
-        <v-card-text>
+        <v-card-text action="/dashboard/user-tables">
           <v-layout wrap>
+
+            <v-text-field label="ID" v-model="ref_no"></v-text-field>
+             </v-layout>
+              <v-layout wrap>
             <v-text-field
               label="Title" v-model="title"/>
                     </v-layout>
@@ -59,6 +63,7 @@
             color="primary"
             flat
             @click="save"
+            
           >
             Submit
           </v-btn>
@@ -119,6 +124,7 @@ import axios from 'axios'
         data () {
           return {
         dialog: false,
+        ref_no:'',
         title: '',
         comments: '',
 
@@ -151,7 +157,7 @@ import axios from 'axios'
 
         
            save(){
-             axios.post("http://127.0.0.1:5000/postproject", {
+             axios.post("http://127.0.0.1:5000/postproject", { "ref_no":this.ref_no,
               "title": this.title, "comments": this.comments
           })
 

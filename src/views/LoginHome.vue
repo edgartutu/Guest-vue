@@ -3,10 +3,22 @@
   <v-app
     id="login-home"
     class="green lighten-4">
-
+    <v-container
+    fill-height
+    fluid
+    grid-list-xl
+    >
+    <h2   class="teal--text">FINAL YEAR PROJECT SYSTEM</h2>
+     
+      <v-spacer></v-spacer>
     <transition mode="out-in">
+      
+      
       <router-view/>
+     
     </transition>
+
+     </v-container>
 
   </v-app>
 </template>

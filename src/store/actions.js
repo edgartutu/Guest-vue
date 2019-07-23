@@ -7,9 +7,9 @@ export default {
     return new Promise((resolve, reject) => {
       commit('auth_request')
       
-      axios.post('/auth', { username: userData.username, password: userData.password })
+      axios.post('/login-guest', { username: userData.username, password: userData.password })
         .then(response => {
-          const token = response.data.access_token
+          const token = response.data.token
           const user = response.data.username
           console.log(response)
           // storing jwt in localStorage. https cookie is safer place to store
@@ -39,7 +39,7 @@ export default {
   refreshtoken ({ commit }) {
     axios.get('/refresh')
       .then(response => {
-        const token = response.data.access_token
+        const token = response.data.token
         localStorage.setItem('token', token)
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
         commit('auth_success', { token })

@@ -9,7 +9,7 @@
         lg12
       >
         <material-card 
-          color="green darken-4"
+          color="green darken-3"
           title="Assigned Proposals"
           popout  
         >

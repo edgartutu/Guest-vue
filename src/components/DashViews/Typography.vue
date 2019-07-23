@@ -11,15 +11,15 @@
           md12>
       
         <material-card
-          color="general"
+          color="red"
           title="Projects"  
         >
             <v-container >
-			<v-card>
+			<form action="/">
 				<v-text-field label="Reg No" placeholder="Reg No" v-model="reg_no"></v-text-field>
 				<v-text-field label="Comment" placeholder="Comment" v-model="body"></v-text-field>
 				<v-btn class="green" @click="submit">Submit</v-btn>
-			</v-card>
+			</form>
 		</v-container> 
           </material-card>
            </v-flex>  
@@ -44,7 +44,9 @@ export default {
   methods: {
     submit(){
       axios.post('http://127.0.0.1:5000/progresscomment',{reg_no:this.reg_no,body:this.body})
+      this.$forceUpdate();
     }
+
   },
     
  

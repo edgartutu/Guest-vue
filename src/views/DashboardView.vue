@@ -2,9 +2,10 @@
   <v-content>
     <v-app
       id="dashboard-view"
+      class="green lighten-4"
       >
-      <v-container>
-       <v-card class="rounded-card">
+      <v-container >
+       <v-card class="rounded-card" >
       <core-filter />
 
       <core-toolbar />
@@ -27,11 +28,13 @@
 <script>
 export default {
   name: 'DashboardView',
+  
   metaInfo () {
     return {
       title: 'FYP'
     }
-  }
+  },
+  
 }
 </script>
 
